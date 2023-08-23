@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+    font-size: 75pt;
+    font-weight: 500;
+}
+
+fieldset{
+    text-align: center;
+    align-items: center;
+    padding: 100px;
+}
+
+.id,
+.password,
+.button{
+    padding: 50px;
+    font-size: 15pt;
+    font-weight: 500;
+}

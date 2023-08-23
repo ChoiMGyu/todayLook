@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디 찾기</title>
+    <meta name = "keyword" content = "아이디찾기, html">
+    <link rel = "stylesheet" type = "text/css" href = "/css/findId.css">
+    <!-- href 경로 변경 -->
+</head>
+<body>
+    <header>
+        <h1>아이디 찾기</h1>
+    </header>
+         <form action = "/members/findid" method = "GET">
+         <!-- form action 수정 -->
+            <fieldset>
+                <div>
+                    <label>대학 / 학과</label>
+                    <br>
+                    <select name = "department" id = "university" onchange = "changeDepartment()" required = "required">
+                     <option> 대학 선택 </option>
+                     <option> 문과대학 </option>
+                     <option> 인문대학 </option>
+                     <option> 자연과학대학 </option>
+                     <option> 공과대학 </option>
+                     <option> 기계IT대학 </option>
+                     <option> 소프트웨어융합대학 </option>
+                     <option> 사회과학대학 </option>
+                     <option> 경영대학 </option>
+                     <option> 의과대학 </option>
+                     <option> 약학대학 </option>
+                     <option> 생명응용과학대학 </option>
+                     <option> 생활과학대학 </option>
+                     <option> 사범대학 </option>
+                     <option> 음악대학 </option>
+                     <option> 예술대학 </option>
+                    </select>
+                    <select name = "department_select" id = "department" required = "required">
+                     <option> 학과 선택 </option>
+                    </select>
+                </div>
+                <br id = "br">
+                <div class = form-item>
+                    <label>이메일</label>
+                    <div class = email-inputs>        
+                      <input class="box" name = "email" id="domain-txt" type="text"/>
+                      <span class="at-symbol">@</span>
+                      <input class="box" name = "email_select" id="domain-txt1" type="text"/>
+                      <select class="box" name = "email_select" id="domain-list">
+                        <option value="type">직접 입력</option>
+                        <option value="yu.ac.kr">yu.ac.kr</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                      </select>
+                      <button type = "submit">이메일 인증하기</button>
+                    </div>
+                </div>
+          </fieldset>  
+         </form>
+         <button type = "submit">아이디 찾기</button>
+</body>
+<script type ="text/javascript" src = "/js/findId.js"></script>
+<!-- src 경로 변경 -->
+</html>

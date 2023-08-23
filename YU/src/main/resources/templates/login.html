@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <meta name = "keyword" content = "로그인, html">
+    <link rel = "stylesheet" type = "text/css" href = "/css/login.css">
+</head>
+<body>
+    <header>
+        <h1>LOGIN</h1>
+    </header>
+         <form action = "/members/login" method = "POST">
+           <fieldset>
+                <div class = "id">
+                    <label for = "id-account" id = "id">아이디 </label>
+                    <input type = "text" name = "login_id" id = "id-account" required = "required">
+                </div>
+                <div class = "password">
+                    <label for = "id-password">비밀번호 </label>
+                    <input type = "password" name = "password" id = "id-password" required = "required">
+                </div>
+                <div class = "button">
+                    <!---------------------08.15 버튼 기능(=type) 수정, 이동 기능 추가(onClick) ------------------------------------------>
+
+                    <button type = "button" name = "id_find" id = "id_find" onclick="location.href='findid'">아이디 찾기 </button>
+                    <button type = "button" name = "password_find" id = "password_find" onclick="location.href='findpw'">비밀번호 찾기 </button>
+                    <button type = "button" name = "signup" id = "signup" onclick="location.href='new'"> 회원 가입 </button>
+                    <button type = "submit" name = "login" id = "login">로그인 </button>
+                    
+                    <!------------------------------------------------------------------------------------------------------------------>
+               </div>
+          </fieldset>  
+        </div>
+        </form> 
+</body>
+<script type ="text/javascript" src = "/js/login.js"></script>
+</html>

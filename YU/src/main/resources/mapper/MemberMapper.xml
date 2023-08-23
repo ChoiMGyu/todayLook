@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- XML선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 태그 규칙을 정의한 DTD 선언 => XML 파일이 어떤 구조와 어떤 element, 어떤 attributes를 가지는지 정의하는 것 -->
+
+<!-- SQL 구문이 존재하는 SQL Mapper 파일 -->
+
+<mapper namespace="Yeungnam.YU.mapper.MemberMapper"> 
+<!-- namespace : Mapper의 전체 경로를 지정 -->
+<!-- Root Element : 여러개의 SQL문을 묶는 용도로 사용 -->
+<!-- SELECT -> <select>, INSERT -> <insert>, UPDATE -> <update>, DELETE -> <delete> -->
+<!-- id : Mapper interface와 XML 파일을 매칭시키기 위해서 interface의 method명과 XML파일의 id를 동일하게 작성  -->
+<!-- resultType : SELECT문 실행 결과를 담을 객체 -->
+<!-- resultMap : SELECT문 실행 결과를 담을 객체를 resultMap으로 지정 -->
+<!-- parameterType : 객체의 프로퍼티값이 SQL문의 입력 파라미터에 지정 -->
+    
+    <!-- 회원가입 --> <!-- Test 통과 -->
+	<insert id = "join" parameterType = "Yeungnam.YU.model.Member">
+		INSERT INTO member
+		(LOGIN_ID, PASSWORD, EMAIL, EMAIL_SELECT, NICKNAME, DEPARTMENT, DEPARTMENT_SELECT, GENDER, MEMBERPHONE_SUB, MEMBERPHONE)
+		VALUES(#{login_id}, #{password}, #{email}, #{email_select}, #{nickname}, #{department}, #{department_select}, #{gender}, <if test="memberPhone_sub != null">#{memberPhone_sub}</if>, <if test="memberPhone != null">#{memberPhone}</if>)
+	</insert>
+	
+	<!-- 회원정보 조회 --> <!-- Test 통과 -->
+	<select id="findMember" parameterType = "java.lang.String" resultType = "Yeungnam.YU.model.Member">
+		SELECT * FROM member
+		WHERE LOGIN_ID = #{value}
+	</select>
+	
+	<!-- 아이디 중복 체크 --> <!-- Test 통과 -->
+	<select id="idChk" parameterType = "Yeungnam.YU.model.Member" resultType="int">
+		SELECT COUNT(*) FROM member
+		WHERE LOGIN_ID = #{login_id}
+	</select>
+	
+	<!-- 로그인 --> <!-- Test 통과 -->
+	<select id = "login" parameterType = "Yeungnam.YU.model.Member" resultType = "Yeungnam.YU.model.Member">
+		SELECT LOGIN_ID, PASSWORD
+		FROM MEMBER
+		WHERE LOGIN_ID = #{login_id}
+		AND PASSWORD = #{password}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id = "update" parameterType = "Yeungnam.YU.model.Member">
+		UPDATE MEMBER SET
+		PASSWORD = #{password}, <!-- #{}는 Controller -> Service -> Mapper를 통해 받은 파라미터값들이 들어감 -->
+		<!-- EMAIL = #{email},
+		EMAIL_SELECT = #{email_select}, -->
+		NICKNAME = #{nickname}
+		<!-- DEPARTMENT = #{department},
+		DEPARTMENT_SELECT = #{department_select},
+		GENDER = #{gender},
+		MEMBERPHONE_SUB = #{memberPhone_sub},
+		MEMBERPHONE = #{memberPhone} -->
+		WHERE LOGIN_ID = #{login_id}
+	</update>
+	
+	<!-- 회원탈퇴 --> <!-- Test 통과 -->
+	<delete id="memberDelete">
+		DELETE FROM member
+		WHERE login_id = #{login_id}
+		AND PASSWORD = #{password}
+	</delete>
+	
+</mapper>

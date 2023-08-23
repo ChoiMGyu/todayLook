@@ -1,0 +1,113 @@
+h1 {
+    text-align: center;
+    font-size: 25pt;
+    font-weight: 500;
+}
+
+legend {
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px; /* 각 항목 사이의 간격 조정 */
+    line-height: 500%;
+    flex-wrap: wrap;
+}
+
+div{  
+    font-weight: 300;
+    line-height: 250%;
+    padding: 5px;
+}
+
+.required-text{
+    font-size: 100%;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.phone{
+    justify-content: center;
+}
+
+.alert-message {
+    color: #FF0000;
+    font-size: 14px;
+    font-weight: 900;
+    position: relative;
+  }
+
+.alert-container {
+    position: absolute;
+  top: -20px;
+  margin-right: 100px;
+}
+
+.submit-button {
+    width: 100px;
+}
+  
+.id,
+.password,
+.repassword
+.email-inputs {
+    align-items: center;
+    display: inline-block;
+    width: 120px;
+}
+  
+  .id label,
+  .password label,
+  .repassword label {
+    flex: 1;
+  }
+  
+  .id input[type="text"],
+  .password input[type="password"],
+  .repassword input[type="password"] {
+    flex: 1;
+  }
+
+select
+{
+    width: 200px; /* 원하는 너비로 변경 */
+    height: 22px;
+}
+  
+  .info .box#domain-list option {
+    font-size: 8px;
+    background-color: #ffffff;
+  }
+
+  .at-symbol {
+    margin: 0 5px;
+}
+.form-item label[for="id-name"] {
+  margin-right: 5px;
+}
+.form-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* 각 항목 사이의 간격 조정 */
+}
+.email-label {
+    display: flex;
+    align-items: center;
+}
+.email-inputs {
+    display: flex;
+    align-items: center;
+}
+
+select[name = "memberPhone_sub"]{
+   width: 50px;
+}
+/*************중복확인 기능 버튼(08.09)****************/
+button[type="submit"] {
+    width: 100px; /* 적당한 가로 길이로 지정 */
+  }
+/****************************************************/

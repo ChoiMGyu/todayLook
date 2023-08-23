@@ -1,0 +1,154 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=5.0">
+    <link rel = "stylesheet" type = "text/css" href = "/css/signup.css">
+</head>
+<body>
+  <header>
+       <h1>회원가입</h1>
+       <hr/>
+  </header>
+       <form action = "/members/new" method = "POST">
+        <fieldset>
+          <legend> 계정 정보 </legend>
+          <!-- 중복 확인 수정 (08.15)--------------------------------------->
+          <div class = "id">
+              <label for = "id-account" id = "id">아이디(*)</label>
+          </div>        
+          <div>
+            <input type = "text" name = "login_id" id = "id-account" required = "required">
+            <button type = "button" id = doublecheck-button>중복 확인 </button>
+            <div class = "alert-message" id = "account-alert">TEST</div>
+          <!--------------------------------------------------------------->
+          </div>
+          <div class = "password">
+              <label for = "id-password">비밀번호(*)</label>
+          </div>
+          <div>
+            <input type = "password" name = "password" id = "id-password" required = "required">
+            <div class = "alert-message">TEST</div>
+
+          </div>
+          <div class = "repassword">
+              <label for = "id-repassword">비밀번호 확인(*)</label>
+          </div>
+          <div>
+            <input type = "password" name = "repassword" id = "id-repassword" required = "required">
+            <div class = "alert-message">TEST</div>
+
+          </div>
+          <div class="required-text">(*은 필수 입력 항목입니다.)</div>
+        </fieldset>
+        <fieldset>
+          <legend>개인 정보</legend>
+           <div class="form-item">
+              <label for = "id-name">닉네임(*)</label>
+              <input type = "text" name = "nickname" id = "id-nickname" required = "required">
+          </div>
+          <div class = form-item>
+              <label class = "email-inputs">이메일(*)</label>
+          </div>
+          <div>
+            <input class="box" name = "email" id="domain-txt" type="text"/>
+            <span class="at-symbol">@</span>
+            <input class="box" name = "email_select" id="domain-txt1" type="text"/>
+            <select class="box" name = "email_select" id="domain-list">
+                  <option value="type">직접 입력</option>
+                  <option value="yu.ac.kr">yu.ac.kr</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="gmail.com">gmail.com</option>
+            </select>
+           </div>
+          
+          <div>
+           <label>대학, 학과(*)</label>
+          </div>
+          <div>
+           <select name = "department" id = "university" onchange = "changeDepartment()" required = "required">
+            <option> 대학 선택 </option>
+            <option> 문과대학 </option>
+            <option> 인문대학 </option>
+            <option> 자연과학대학 </option>
+            <option> 공과대학 </option>
+            <option> 기계IT대학 </option>
+            <option> 소프트웨어융합대학 </option>
+            <option> 사회과학대학 </option>
+            <option> 경영대학 </option>
+            <option> 의과대학 </option>
+            <option> 약학대학 </option>
+            <option> 생명응용과학대학 </option>
+            <option> 생활과학대학 </option>
+            <option> 사범대학 </option>
+            <option> 음악대학 </option>
+            <option> 예술대학 </option>
+           </select>
+           <select name = "department_select" id = "department" required = "required">
+            <option> 학과 선택 </option>
+           </select>
+          </div>
+          </div>
+          <div>
+            <label>성별(*)</label>
+            <input type = "radio" name = "gender" id = "id-gender-male"/ required = "required" value = 0>
+            <label for = "id-gender-male">남</label>
+            <input type = "radio" name = "gender" id = "id-gender-female"/ required = "required" value = 1>
+            <label for = "id-gender-female">여</label>
+           
+          </div>
+          <div class="required-text">(*은 필수 입력 항목입니다.)</div>
+
+        </fieldset>
+         
+        <fieldset>
+          <legend>선택 입력 사항</legend>
+        <div class = "phone">
+          <label>휴대전화 번호</label>
+          <select name = "memberPhone_sub" id = "memberPhone_sub">
+           <option> 010 </option>
+          </select>
+            <input type = "text" name = "memberPhone" id = "memberPhone">
+          </select>
+         </div>
+        </fieldset>
+        <div>
+          <input type = "checkbox" name = "agree" id = "id-agree"/ required = "required">
+          <label for = "id-agree">
+           개인정보 수집에 동의합니다.
+          </label>
+       </div>
+       <button type = "submit">가입하기 </button>
+       </form>
+            <script type ="text/javascript" src = "/js/signup.js">
+
+     /********************** 중복 확인 기능 수정 (08.16)*********************/
+     $('#doublecheck-button').keyup(function(){
+      let login_id_account = $('#id-account').val();
+
+      $.ajax({
+          url: "/members/idChk",
+          type : "post",
+          data : {login_id: login_id_account},
+          dataType : 'json',
+          success: function(result){
+            if(result == 1){
+              $("#account-alert").html('이미 사용중인 아이디입니다.');
+              $("#account-alert").attr('color', '#dc3545');
+            } else{
+              $("#account-alert").html('사용 가능한 아이디입니다.');
+              $("#account-alert").attr('color', '#2fb380');
+            }
+          },
+          error : function(){
+            alert("서버요청실패!!");
+          }
+
+     })
+
+    })
+
+
+     </script>
+     </body>
+</html>
